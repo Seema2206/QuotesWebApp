@@ -26,20 +26,15 @@ namespace WarpDrivePractical.Controllers
             return Ok(MapQuoteVM(quotes));
         }
         [HttpGet("SearchQuotes")]
-        public ActionResult SearchQuotes(string? author,string? tags,string? quote)
+        public ActionResult SearchQuotes(string? search)
         {
             List<Quotes> quotes = new List<Quotes>();
-            if(author != null)
+            if(search != null)
             {
-                quotes = _quotesDbContext.Quotes.Where(x => x.Author.ToLower().Contains(author.ToLower())).ToList();
+                quotes = _quotesDbContext.Quotes.Where(x => x.Author.ToLower().
+                Contains(search.ToLower()) || x.Tags == search || x.Quote.ToLower().Contains(search.ToLower())).ToList();
             }
-            else if(tags != null){
-                quotes = _quotesDbContext.Quotes.Where(x => x.Tags == tags).ToList();
-            }
-            else if(quote != null)
-            {
-                quotes = _quotesDbContext.Quotes.Where(x => x.Quote.ToLower().Contains(quote.ToLower())).ToList();
-            }
+            
             return Ok(MapQuoteVM(quotes));
         }
         [HttpGet("GetQuote/{id}")]
@@ -82,6 +77,7 @@ namespace WarpDrivePractical.Controllers
         {
             Quotes quotes = new Quotes()
             {
+                Id= quotesVM.id,
                 Author = quotesVM.Author,
                 Tags = string.Join(",", quotesVM.Tags),
                 Quote = quotesVM.Quote
@@ -96,6 +92,7 @@ namespace WarpDrivePractical.Controllers
             {
                 QuotesVM quotesVm = new QuotesVM()
                 {
+                    id=item.Id,
                     Author = item.Author,
                     Tags = item.Tags.Split(","),
                     Quote = item.Quote

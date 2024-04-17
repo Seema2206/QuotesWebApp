@@ -1,0 +1,30 @@
+<div class="div container my-5">
+    <div class="mb-5 row">
+        <div class="col-2">
+            <h3 class="">Quotes</h3>
+        </div>
+        <div class="col-10 text-end">
+            <a class="btn btn-dark" routerLink="manage-quotes">Add Quote</a>
+        </div>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Author</th>
+                <th>tags</th>
+                <th>Quote</th>
+                <th colspan="3">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let quote of quotes">
+                <td>{{quote.author}}</td>
+                <td>{{quote.tags}}</td>
+                <td>{{quote.quote}}</td>
+                <td><a [routerLink]="['/manage-quotes']">Edit</a></td>
+                <td><a class="active" (click)="deleteQuote(quote.id)">Delete</a></td>
+            </tr>
+</tbody>
+    </table>
+</div>

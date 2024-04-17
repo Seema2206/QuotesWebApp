@@ -2,7 +2,7 @@
     <h3 class="mb-3">Add New Quote</h3>
     <div class="row">
         <div class="col-6">
-            <form #form="ngForm">
+            <form #form="ngForm" (ngSubmit)="addQuotes()">
 
                 <div class="mb-3">
                     <label for="author" class="form-label">Author</label>
@@ -12,7 +12,7 @@
                 <div class="mb-3">
                     <label for="title" class="form-label">Tags</label>
                     <input type="text" class="form-control" id="title"
-                           name="title" [(ngModel)]="quotes.tags">
+                           name="title" [(ngModel)]="tags">
                 </div>
                 <div class="mb-3">
                     <label for="description" class="form-label">Quote</label>
@@ -24,7 +24,7 @@
                         <button type="submit" class="btn btn-primary">Add</button>
                     </div>
                     <div class="col-10">
-                        <a class="btn btn-primary" routerLink="/products">Back to Quotes</a>
+                        <a class="btn btn-primary" routerLink="">Back to Quotes</a>
                     </div>
                     <p></p>
                 </div>

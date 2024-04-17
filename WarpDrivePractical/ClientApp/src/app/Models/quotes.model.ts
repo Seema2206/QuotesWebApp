@@ -1,6 +1,6 @@
 export interface Quotes {
   id: string;
   author: string;
-  tags: string;
+  tags: string[];
   quote: string;
 }
