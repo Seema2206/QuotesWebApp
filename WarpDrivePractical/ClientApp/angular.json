@@ -132,5 +132,8 @@
       }
     }
   },
-  "defaultProject": "WarpDrivePractical"
+  "defaultProject": "WarpDrivePractical",
+  "cli": {
+    "analytics": false
+  }
 }

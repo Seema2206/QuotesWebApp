@@ -1,3 +1,4 @@
+import { Quotes } from 'src/app/models/quotes.model';
 import { Component } from '@angular/core';
 
 @Component({
@@ -5,5 +6,11 @@ import { Component } from '@angular/core';
   templateUrl: './home.component.html',
 })
 export class HomeComponent {
+  quotes: Quotes = {
+    id: '',
+    author: '',
+    tags: '',
+    quote: ''
+  }
 }
 
